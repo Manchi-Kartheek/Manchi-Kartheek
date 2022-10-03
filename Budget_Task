@@ -1,0 +1,258 @@
+package P1;
+import java.util.Scanner;
+public class Budget
+{
+	static double myBudjet=50000;
+	static double fp;
+	static double lg=11000;
+	static double mi=15000;
+	static double ac1=12500;
+	static double ac2=14000;
+	static double rc=500;
+	static double r;
+	static double sf1=5000;
+	static double sf2=8000;
+	static double ch=400;
+	static double ol=200;
+	static double formal=800;
+	static double causuals = 1000;
+	static Scanner sc  =new Scanner(System.in);
+	public static int bdjt=10000;
+	public static void budget()
+	{
+		if(myBudjet<0)
+		{
+			System.out.println("***** No budget *****");
+		}
+		else
+		{
+		shopping();
+		}
+	}
+	public static void shopping()
+	{
+		System.out.println("----------------------------------------------------------------------");
+		System.out.println("Select the Items\n1.Electronics\n2.Kitchen\n3.House\n4.Colthes\n5.Final Price\n====Alert====\nOur Budjet is :"+myBudjet);
+		int s = sc.nextInt();
+		if(s==1)
+		{
+			electronics();
+		}
+		else if(s==2)
+		{
+			kitchen();
+		}
+		else if(s==3)
+		{
+			house();
+		}
+		else if(s==4)
+		{
+			colthes();
+		}
+		else if(s==5)
+		{
+			System.out.print("Your Final Price is : ");
+			if(fp<0)
+			{
+				System.out.println(fp);
+				System.out.println("Not Enough Money \nPlease Visit Afain");
+			}
+			else if(fp>0)
+			{
+				System.out.println(fp);
+				System.out.println("You have money Enter\n1.ReShopping\n2.Final Bill");
+				int b = sc.nextInt();
+				if(b==1)
+				{
+					shopping();
+				}
+				else
+				{
+					System.out.println("Your Final Bill is: "+fp);
+				}
+			}
+		}
+		else
+		{
+			System.out.println("Invalid Selection \nPlease Select Again");
+			shopping();
+		}
+	}
+	public static void electronics()
+	{
+		System.out.println("=====Welcome to Electronic Section=====\nPlease Select the items\n1.TV\n2.AC");
+		int e = sc.nextInt();
+		if(e==1)
+		{
+			System.out.println("Select the below as Shown Below with price\n1.LG: "+lg);
+			System.out.println("2.MI: "+mi);
+			System.out.println("Any key For Exit from this section except above mentioned");
+			int t = sc.nextInt();
+			if(t==1)
+			{
+				System.out.println("You are selected LG tv: "+lg);
+				fp = lg+fp;
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-lg)+" ****");
+				budget();
+			}
+			else if(t==2)
+			{
+				System.out.println("You are selected MI tv: "+mi);
+				fp = lg+mi;
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-mi)+" ****");
+				budget();
+			}
+			else
+			{
+				System.out.println("Invalid Selection : ");
+				shopping();
+			}
+		}
+		else if(e==2)
+		{
+			System.out.println("Select the below as Shown Below with price\n1.AC-1: "+ac1);
+			System.out.println("2.AC-2: "+ac2);
+			System.out.println("Any key For Exit from this section except above mentioned");
+			int t = sc.nextInt();
+			if(t==1)
+			{
+				System.out.println("You are selected AC-1: "+ac1);
+				fp = ac1+fp;
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-ac1)+" ****");
+				budget();
+			}
+			else if(t==2)
+			{
+				System.out.println("You are selected AC-2: "+ac2);
+				fp = ac2+mi;
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-ac2)+" ****");
+				budget();
+			}
+			else
+			{
+				System.out.println("Invalid Selection : ");
+				shopping();
+			}
+		}
+		else
+		{
+			System.out.println("Invalid Selection\nPlease Select Again");
+			electronics();
+		}
+	}
+	public static void kitchen()
+	{
+		System.out.println("=====Welcome to Kitchen Section=====");
+			System.out.println("Select the below as Shown Below with price\n1.Rice/Kg: "+rc);
+			System.out.println("2.Oil/ltr: "+ol);
+			System.out.println("Any key For Exit from this section except above mentioned");
+			int t = sc.nextInt();
+			if(t==1)
+			{
+				System.out.println("You are selected Rice\nSelect no of kg's You Want");
+				Double kg = sc.nextDouble();
+				System.out.println(kg+" Kg's of Rice Selected");
+				r = r+(kg*rc);
+				fp = r+fp;
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-r)+" ****");
+				budget();
+			}
+			else if(t==2)
+			{
+				System.out.println("You are selected Oil\nSelect no of liters You Want");
+				Double lit = sc.nextDouble();
+				System.out.println(lit+" liters of Oil Selected");
+				Double o = (lit*ol);
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-o)+" ****");
+				fp = fp+o;
+				budget();
+			}
+			else
+			{
+				System.out.println("Invalid Selection\nPlease Select Again");
+				kitchen();
+			}
+	}
+	public static void house()
+	{
+		System.out.println("=====Welcome to House Section=====\nPlease Select the items\n1.Sofa\n2.Chair");
+		int e = sc.nextInt();
+		if(e==1)
+		{
+			System.out.println("Select the below as Shown Below with price\n1.Sofa: "+sf1);
+			System.out.println("2.Sofa-2: "+sf2);
+			System.out.println("Any key For Exit from this section except above mentioned");
+			int t = sc.nextInt();
+			if(t==1)
+			{
+				System.out.println("You are selected Sofa-1");
+				fp = sf1+fp;
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-sf1)+" ****");
+				budget();
+			}
+			else if(t==2)
+			{
+				System.out.println("You are selected Sofa-2");
+				fp = sf2+mi;
+				System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-sf2)+" ****");
+				budget();
+			}
+			else
+			{
+				System.out.println("Invalid Selection : ");
+				shopping();
+			}
+		}
+		else if(e==2)
+		{
+			System.out.println("We have chair with price\n1.Chair-1:"+ch);
+			System.out.println("Enter no of Chairs You Want :");
+			int q = sc.nextInt();
+			double chair = (q*ch);
+			fp = fp+(q*ch);
+			System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-chair)+" ****");
+			budget();
+		}
+		else
+		{
+			System.out.println("Invalid Selection\nPlease Select Again");
+			house();
+		}
+	}
+	public static void colthes()
+	{
+		System.out.println("=====Welcome to Clothes Section=====\nPlease Select the items\n1.Formals\n2.Causuals");
+		int e = sc.nextInt();
+		if(e==1)
+		{
+			System.out.println("Select the no of Quantity with price for single formal dress: "+formal);
+			int t = sc.nextInt();
+			System.out.println(t+" quantity selected ");
+			double f = t*formal;
+			System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-f)+" ****");
+			fp = fp+f;
+			budget();
+		}
+		else if(e==2)
+		{
+			System.out.println("Select the no of Quantity with price for single causual dress: "+causuals);
+			int t = sc.nextInt();
+			System.out.println(t+" quantity selected ");
+			double f1 = t*causuals;
+			System.out.println("**** Remaining balance is :"+(myBudjet=myBudjet-f1)+" ****");
+			fp = fp+f1;
+			budget();
+		}
+		else
+		{
+			System.out.println("Invalid Selection\nPlease Select Again");
+			colthes();
+		}
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("====Welcome to My Store====");
+		shopping();
+	}
+}
