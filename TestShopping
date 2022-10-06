@@ -1,0 +1,624 @@
+package P1;
+
+public class Billing
+{
+	int id;
+	String product_name;
+	int product_code;
+	double price;
+	int quantity;
+	public int getProduct_code() {
+		return product_code;
+	}
+	public void setProduct_code(int product_code) {
+		this.product_code = product_code;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+}
+
+
+
+
+
+package P1;
+
+public interface SoftareDAO
+{
+	public void addEle(Billing billing);
+	public void addHome(Billing billing);
+	public void addKitchen(Billing billing);
+	public void addClothes(Billing billing);
+	public void addFinal(Billing billing);
+}
+
+
+
+
+
+package P1;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import com.mysql.cj.xdevapi.Result;
+
+public class softwareService implements SoftareDAO
+{
+
+	@Override
+	public void addEle(Billing billing)
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			int i = statement.executeUpdate("insert into elect (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			if(i>0)
+			{
+				System.out.println("Data Inserted");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	@Override
+	public void addHome(Billing billing)
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			int i = statement.executeUpdate("insert into home (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			if(i>0)
+			{
+				System.out.println("Data Inserted");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	@Override
+	public void addKitchen(Billing billing)
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			int i = statement.executeUpdate("insert into kitchen (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			if(i>0)
+			{
+				System.out.println("Data Inserted");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	@Override
+	public void addClothes(Billing billing)
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			int i = statement.executeUpdate("insert into clothes (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			if(i>0)
+			{
+				System.out.println("Data Inserted");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+	public void displayEle()
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from elect");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+	public void displayClothes()
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from clothes");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+	public void displayhome()
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from home");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+	public void displayKitchen()
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from kitchen");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+	@Override
+	public void addFinal(Billing billing)
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			int i = statement.executeUpdate("insert into items (`id`,`product_name`,`quantity`,`price`) values('"+billing.getId()+"','"+billing.getProduct_name()+"','"+billing.getQuantity()+"','"+billing.getPrice()+"')");
+			if(i>0)
+			{
+				System.out.println("Data Inserted");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+	public void finalBill()
+	{
+		try
+		{
+			Connection connection = ConnectionFactory.getConnection();
+			Statement statement = connection.createStatement();
+			ResultSet rs= statement.executeQuery("select * from items");
+			System.out.println("id\tProduct\tQuantity\tPrice");
+			while(rs.next())
+			{
+				System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getInt(3)+"\t"+rs.getInt(4));
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+}
+
+
+
+
+
+
+
+package P1;
+import java.util.Scanner;
+
+public class ProductBooking
+{
+	static int ele=100;
+	static int home=101;
+	static int kitchen=102;
+	static int clothes=103;
+	static double tv=15000;
+	static double ac=20000;
+	static int quantity;
+	static double sf=2000;
+	static double ch = 400;
+	static double rc = 800;
+	static double oil = 200;
+	static double fr = 800;
+	static double cau = 1000;
+	public static double price;
+	public static double budget=100000;
+	public static double f_p;
+	static Scanner sc = new Scanner(System.in);
+	static Billing billing = new Billing();
+	static softwareService service = new softwareService();
+	public static void products()
+	{
+		System.out.println("Please Enter the given below ID\n1.Electronics : ID-"+ele+"\n2.Home : ID-"+home+"\n3.Kitchen : ID-"+kitchen+"\n4.Clothes : ID-"+clothes);
+		int p = sc.nextInt();
+		if(p==ele)
+		{
+			electronics();
+		}
+		else if(p==home)
+		{
+			home();
+		}
+		else if(p==kitchen)
+		{
+			kitchen();
+		}
+		else if(p==clothes)
+		{
+			clothes();
+		}
+		else
+		{
+			System.out.println("Invalid ID\nPlease Select Again\n==========================");
+			products();
+		}
+	}
+	private static void clothes()
+	{
+		String s1 = "Formls";
+		String s2 = "causuals";
+		billing.setProduct_name(s1);
+		billing.setProduct_name(s2);
+		billing.setPrice(fr);
+		billing.setPrice(cau);
+		billing.setProduct_code(clothes);
+		service.addClothes(billing);
+	}
+	private static void kitchen()
+	{
+		String s1 = "Rice";
+		String s2 = "Oil";
+		billing.setProduct_name(s1);
+		billing.setProduct_name(s2);
+		billing.setPrice(rc);
+		billing.setPrice(oil);
+		billing.setProduct_code(kitchen);
+		service.addKitchen(billing);
+	}
+	private static void home()
+	{
+		String s1 = "Chair";
+		String s2 = "Sofa";
+		billing.setProduct_name(s1);
+		billing.setProduct_name(s2);
+		billing.setPrice(ch);
+		billing.setPrice(sf);
+		billing.setProduct_code(home);
+		service.addHome(billing);
+	}
+	private static void electronics()
+	{
+		String s1 = "TV";
+		String s2 = "AC";
+		billing.setProduct_name(s1);
+		billing.setProduct_name(s2);
+		billing.setPrice(tv);
+		billing.setPrice(ac);
+		billing.setProduct_code(ele);
+		service.addEle(billing);
+		
+	}
+}
+
+
+
+=======================================================================Main Class====================================================================================
+
+
+
+
+package P1;
+
+import java.util.Scanner;
+
+public class Booking
+{
+	static int ele=100;
+	static int home=101;
+	static int kitchen=102;
+	static int clothes=103;
+	static double tv=15000;
+	static double ac=20000;
+	static int quantity;
+	static double sf=2000;
+	static double ch = 400;
+	static double rc = 800;
+	static double oil = 200;
+	static double fr = 800;
+	static double cau = 1000;
+	public static double price;
+	public static double budget=100000;
+	public static double f_p;
+	static Scanner sc = new Scanner(System.in);
+	static Billing billing = new Billing();
+	static softwareService service = new softwareService();
+	public static void alert()
+	{
+		if(budget<0)
+		{
+			System.out.println("Insufficient Balance");
+		}
+		else
+		{
+			again();
+		}
+	}
+	public static void again()
+	{
+		System.out.println("press \n1.shopping\n2.Final bill");
+		int p = sc.nextInt();
+		if(p==1)
+		{
+			products();
+		}
+		else if(p==2)
+		{
+			service.finalBill();
+			System.out.println("Your Final Bill is : "+f_p);
+		}
+		else
+		{
+			again();
+		}
+	}
+	public static void products()
+	{
+		System.out.println("Please Enter the given below ID\n1.Electronics : ID-"+ele+"\n2.Home : ID-"+home+"\n3.Kitchen : ID-"+kitchen+"\n4.Clothes : ID-"+clothes);
+		int p = sc.nextInt();
+		if(p==ele)
+		{
+			electronics();
+		}
+		else if(p==home)
+		{
+			home();
+		}
+		else if(p==kitchen)
+		{
+			kitchen();
+		}
+		else if(p==clothes)
+		{
+			clothes();
+		}
+		else
+		{
+			System.out.println("Invalid ID\nPlease Select Again\n==========================");
+			products();
+		}
+	}
+	private static void clothes()
+	{
+		System.out.println("Please select the item given below");
+		service.displayClothes();
+		int s = sc.nextInt();
+		if(s==1)
+		{
+			System.out.println("you are selected Formals");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*fr;
+			budget = budget-f_p;
+			price = q*fr;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("Formals");
+			service.addFinal(billing);
+			alert();
+		}
+		else if(s==2)
+		{
+			System.out.println("you are selected Casuals");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*cau;
+			budget = budget-f_p;
+			price = q*cau;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("Casuals");
+			service.addFinal(billing);
+			alert();
+			
+		}
+		else
+		{
+			System.out.println("Invalid selection");
+			clothes();
+		}
+	}
+	private static void kitchen()
+	{
+		System.out.println("Please select the item given below");
+		service.displayKitchen();
+		int s = sc.nextInt();
+		if(s==1)
+		{
+			System.out.println("you are selected Rice");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*rc;
+			budget = budget-f_p;
+			price = q*rc;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("Rice");
+			service.addFinal(billing);
+			alert();
+		}
+		else if(s==2)
+		{
+			System.out.println("you are selected Oil");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*oil;
+			budget = budget-f_p;
+			price = q*oil;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("Oil");
+			service.addFinal(billing);
+			alert();
+		}
+		else
+		{
+			System.out.println("Invalid selection");
+			kitchen();
+		}
+	}
+	private static void home()
+	{
+		System.out.println("Please select the item given below");
+		service.displayhome();
+		int s = sc.nextInt();
+		if(s==1)
+		{
+			System.out.println("you are selected Chair");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*ch;
+			budget = budget-f_p;
+			price = q*ch;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("Chair");
+			service.addFinal(billing);
+			alert();
+		}
+		else if(s==2)
+		{
+			System.out.println("you are selected Sofa");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*sf;
+			budget = budget-f_p;
+			price = q*sf;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("Chair");
+			service.addFinal(billing);
+			alert();
+		}
+		else
+		{
+			System.out.println("Invalid selection");
+			home();
+		}
+	}
+	private static void electronics()
+	{
+		System.out.println("Please select the item given below");
+		service.displayEle();
+		int s = sc.nextInt();
+		if(s==1)
+		{
+			System.out.println("you are selected TV");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*tv;
+			budget = budget-f_p;
+			price = q*tv;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("TV");
+			service.addFinal(billing);
+			alert();
+		}
+		else if(s==2)
+		{
+			System.out.println("you are selected AC");
+			System.out.println("Enter the quantity Item");
+			int q= sc.nextInt();
+			f_p=f_p+q*ac;
+			budget = budget-f_p;
+			price = q*ac;
+			System.out.println("Item cost is : "+price);
+			System.out.println("Remaining Balance :"+budget);
+			billing.setPrice(price);
+			billing.setQuantity(q);
+			billing.setProduct_name("AC");
+			service.addFinal(billing);
+			alert();
+		}
+		else
+		{
+			System.out.println("Invalid selection");
+			electronics();
+		}
+	}
+	public static void main(String[] args)
+	{
+		again();
+	}
+
+}
+
