@@ -150,9 +150,10 @@ public class softwareService implements SoftareDAO
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("select * from elect");
+			System.out.println("id\tcode\tproduct\tprice");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+				System.out.println(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4));
 			}
 		}
 		catch(Exception e)
@@ -167,9 +168,10 @@ public class softwareService implements SoftareDAO
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("select * from clothes");
+			System.out.println("id\tcode\tproduct\tprice");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+				System.out.println(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4));
 			}
 		}
 		catch(Exception e)
@@ -184,9 +186,10 @@ public class softwareService implements SoftareDAO
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("select * from home");
+			System.out.println("id\tcode\tproduct\tprice");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+				System.out.println(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4));
 			}
 		}
 		catch(Exception e)
@@ -201,9 +204,10 @@ public class softwareService implements SoftareDAO
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("select * from kitchen");
+			System.out.println("id\tcode\tproduct\tprice");
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getInt(4));
+				System.out.println(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4));
 			}
 		}
 		catch(Exception e)
@@ -322,14 +326,13 @@ public class ProductBooking
 	}
 	public static void main(String[] args)
 	{
-		System.out.println("Welcome to our company");
-		System.out.println("----------------------------");
 //		electronics();
 //		home();
 //		kitchen();
 //		clothes();
 	}
 }
+
 
 
 
@@ -348,15 +351,7 @@ public class Booking
 	static int home=101;
 	static int kitchen=102;
 	static int clothes=103;
-	static double tv=15000;
-	static double ac=20000;
 	static int quantity;
-	static double sf=2000;
-	static double ch = 400;
-	static double rc = 800;
-	static double oil = 200;
-	static double fr = 800;
-	static double cau = 1000;
 	public static double price;
 	public static double budget=100000;
 	public static double f_p;
@@ -376,7 +371,7 @@ public class Booking
 	}
 	public static void again()
 	{
-		System.out.println("press \n1.shopping\n2.Final bill");
+		System.out.println("Enter \n1.Shopping\n2.Final bill");
 		int p = sc.nextInt();
 		if(p==1)
 		{
@@ -394,7 +389,7 @@ public class Booking
 	}
 	public static void products()
 	{
-		System.out.println("Please Enter the given below ID\n1.Electronics : ID-"+ele+"\n2.Home : ID-"+home+"\n3.Kitchen : ID-"+kitchen+"\n4.Clothes : ID-"+clothes);
+		System.out.println("Please Enter the given below ID\n1.Electronics :\t ID-"+ele+"\n2.Home :\t ID-"+home+"\n3.Kitchen :\t ID-"+kitchen+"\n4.Clothes :\t ID-"+clothes);
 		int p = sc.nextInt();
 		if(p==ele)
 		{
@@ -422,15 +417,17 @@ public class Booking
 	{
 		System.out.println("Please select the item given below");
 		service.displayClothes();
+		 double fr = 800;
+		 double cau = 1000;
 		int s = sc.nextInt();
 		if(s==1)
 		{
 			System.out.println("you are selected Formals");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*fr;
-			budget = budget-f_p;
 			price = q*fr;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -444,9 +441,9 @@ public class Booking
 			System.out.println("you are selected Casuals");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*cau;
-			budget = budget-f_p;
 			price = q*cau;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -466,15 +463,17 @@ public class Booking
 	{
 		System.out.println("Please select the item given below");
 		service.displayKitchen();
+		 double rc = 800;
+		 double oil = 200;
 		int s = sc.nextInt();
 		if(s==1)
 		{
 			System.out.println("you are selected Rice");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*rc;
-			budget = budget-f_p;
 			price = q*rc;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -488,9 +487,9 @@ public class Booking
 			System.out.println("you are selected Oil");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*oil;
-			budget = budget-f_p;
 			price = q*oil;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -509,15 +508,17 @@ public class Booking
 	{
 		System.out.println("Please select the item given below");
 		service.displayhome();
+		 double sf=2000;
+		 double ch = 400;
 		int s = sc.nextInt();
 		if(s==1)
 		{
 			System.out.println("you are selected Chair");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*ch;
-			budget = budget-f_p;
 			price = q*ch;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -531,9 +532,9 @@ public class Booking
 			System.out.println("you are selected Sofa");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*sf;
-			budget = budget-f_p;
 			price = q*sf;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -552,15 +553,17 @@ public class Booking
 	{
 		System.out.println("Please select the item given below");
 		service.displayEle();
+		 double tv=15000;
+		 double ac=20000;
 		int s = sc.nextInt();
 		if(s==1)
 		{
 			System.out.println("you are selected TV");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*tv;
-			budget = budget-f_p;
 			price = q*tv;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -574,9 +577,9 @@ public class Booking
 			System.out.println("you are selected AC");
 			System.out.println("Enter the quantity Item");
 			int q= sc.nextInt();
-			f_p=f_p+q*ac;
-			budget = budget-f_p;
 			price = q*ac;
+			f_p=f_p+price;
+			budget = budget-price;
 			System.out.println("Item cost is : "+price);
 			System.out.println("Remaining Balance :"+budget);
 			billing.setPrice(price);
@@ -593,8 +596,34 @@ public class Booking
 	}
 	public static void main(String[] args)
 	{
+		System.out.println("Welcome to our company");
+		System.out.println("----------------------------");
 		again();
 	}
 
 }
+ ===============================================================================================================================================================
+package P1;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
+public class ConnectionFactory
+{
+	static Connection connection =null;
+	public static Connection getConnection() {
+
+{
+	try
+	{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopping","root","root");
+		return connection;
+	}
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
+	return connection;
+}
+}
+}
