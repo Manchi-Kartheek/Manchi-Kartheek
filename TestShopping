@@ -65,8 +65,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.mysql.cj.xdevapi.Result;
-
 public class softwareService implements SoftareDAO
 {
 
@@ -77,7 +75,7 @@ public class softwareService implements SoftareDAO
 		{
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
-			int i = statement.executeUpdate("insert into elect (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			int i = statement.executeUpdate("insert into elect (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"'),('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name2()+"','"+billing.getPrice2()+"')");
 			if(i>0)
 			{
 				System.out.println("Data Inserted");
@@ -96,7 +94,7 @@ public class softwareService implements SoftareDAO
 		{
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
-			int i = statement.executeUpdate("insert into home (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			int i = statement.executeUpdate("insert into home (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"'),('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name2()+"','"+billing.getPrice2()+"')");
 			if(i>0)
 			{
 				System.out.println("Data Inserted");
@@ -115,7 +113,7 @@ public class softwareService implements SoftareDAO
 		{
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
-			int i = statement.executeUpdate("insert into kitchen (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			int i = statement.executeUpdate("insert into kitchen (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"'),('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name2()+"','"+billing.getPrice2()+"')");
 			if(i>0)
 			{
 				System.out.println("Data Inserted");
@@ -134,7 +132,7 @@ public class softwareService implements SoftareDAO
 		{
 			Connection connection = ConnectionFactory.getConnection();
 			Statement statement = connection.createStatement();
-			int i = statement.executeUpdate("insert into clothes (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"')");
+			int i = statement.executeUpdate("insert into clothes (`id`,`product_code`,`product`,`price`) values('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name()+"','"+billing.getPrice()+"'),('"+billing.getId()+"','"+billing.getProduct_code()+"','"+billing.getProduct_name2()+"','"+billing.getPrice2()+"')");
 			if(i>0)
 			{
 				System.out.println("Data Inserted");
@@ -257,7 +255,6 @@ public class softwareService implements SoftareDAO
 
 
 
-
 package P1;
 import java.util.Scanner;
 
@@ -267,91 +264,70 @@ public class ProductBooking
 	static int home=101;
 	static int kitchen=102;
 	static int clothes=103;
-	static double tv=15000;
-	static double ac=20000;
-	static int quantity;
-	static double sf=2000;
-	static double ch = 400;
-	static double rc = 800;
-	static double oil = 200;
-	static double fr = 800;
-	static double cau = 1000;
-	public static double price;
-	public static double budget=100000;
-	public static double f_p;
 	static Scanner sc = new Scanner(System.in);
 	static Billing billing = new Billing();
 	static softwareService service = new softwareService();
-	public static void products()
-	{
-		System.out.println("Please Enter the given below ID\n1.Electronics : ID-"+ele+"\n2.Home : ID-"+home+"\n3.Kitchen : ID-"+kitchen+"\n4.Clothes : ID-"+clothes);
-		int p = sc.nextInt();
-		if(p==ele)
-		{
-			electronics();
-		}
-		else if(p==home)
-		{
-			home();
-		}
-		else if(p==kitchen)
-		{
-			kitchen();
-		}
-		else if(p==clothes)
-		{
-			clothes();
-		}
-		else
-		{
-			System.out.println("Invalid ID\nPlease Select Again\n==========================");
-			products();
-		}
-	}
 	private static void clothes()
 	{
+		double fr = 800;
+		double cau = 1000;
 		String s1 = "Formls";
-		String s2 = "causuals";
 		billing.setProduct_name(s1);
-		billing.setProduct_name(s2);
+		String s2 = "causuals";
 		billing.setPrice(fr);
-		billing.setPrice(cau);
+		billing.setProduct_name2(s2);
+		billing.setPrice2(cau);
 		billing.setProduct_code(clothes);
 		service.addClothes(billing);
 	}
 	private static void kitchen()
 	{
+		double rc = 800;
+		double oil = 200;
 		String s1 = "Rice";
 		String s2 = "Oil";
 		billing.setProduct_name(s1);
-		billing.setProduct_name(s2);
+		billing.setProduct_name2(s2);
 		billing.setPrice(rc);
-		billing.setPrice(oil);
+		billing.setPrice2(oil);
 		billing.setProduct_code(kitchen);
 		service.addKitchen(billing);
 	}
 	private static void home()
 	{
+		double sf=2000;
+		double ch = 400;
 		String s1 = "Chair";
 		String s2 = "Sofa";
 		billing.setProduct_name(s1);
-		billing.setProduct_name(s2);
+		billing.setProduct_name2(s2);
 		billing.setPrice(ch);
-		billing.setPrice(sf);
+		billing.setPrice2(sf);
 		billing.setProduct_code(home);
 		service.addHome(billing);
 	}
 	private static void electronics()
 	{
+		double tv=15000;
+		double ac=20000;
 		String s1 = "TV";
 		String s2 = "AC";
 		billing.setProduct_name(s1);
-		billing.setProduct_name(s2);
+		billing.setProduct_name2(s2);
 		billing.setPrice(tv);
-		billing.setPrice(ac);
+		billing.setPrice2(ac);
 		billing.setProduct_code(ele);
 		service.addEle(billing);
 		
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to our company");
+		System.out.println("----------------------------");
+//		electronics();
+//		home();
+//		kitchen();
+//		clothes();
 	}
 }
 
